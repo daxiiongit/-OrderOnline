@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <!-- 批量扫描别名 -->
+       <!-- <package name="com.sunyanxiong.ssm.po"/>-->
+        <typeAlias type="com.sunyanxiong.ssm.po.Admin" alias="admin"></typeAlias>
+    </typeAliases>
+
+    <mappers>
+        <package name="com.sunyanxiong.ssm.mapper"></package>
+    </mappers>
+
+</configuration>

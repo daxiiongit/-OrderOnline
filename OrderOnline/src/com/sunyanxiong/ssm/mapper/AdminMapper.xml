@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyanxiong.ssm.mapper.AdminMapper">
+
+    <!-- 动态验证 管理员信息sql -->
+    <sql id="comfirmAdmin">
+        <if test="(loginname != null and loginname != '')
+            and (loginpwd != null and loginpwd != '') ">
+            AND loginname = #{loginname}
+            AND loginpwd = #{loginpwd}
+        </if>
+    </sql>
+
+    <select id="findAdmin" parameterType="admin" resultType="admin">
+        select * from admin
+        <where>
+            <include refid="comfirmAdmin"></include>
+        </where>
+    </select>
+</mapper>
