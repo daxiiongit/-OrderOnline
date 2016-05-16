@@ -8,6 +8,7 @@
         <!-- 批量扫描别名 -->
        <!-- <package name="com.sunyanxiong.ssm.po"/>-->
         <typeAlias type="com.sunyanxiong.ssm.po.Admin" alias="admin"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.po.Mealseries" alias="mealseries"></typeAlias>
     </typeAliases>
 
     <mappers>

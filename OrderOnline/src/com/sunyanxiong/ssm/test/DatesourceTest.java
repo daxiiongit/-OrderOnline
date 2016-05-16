@@ -1,7 +1,9 @@
 package com.sunyanxiong.ssm.test;
 
 import com.sunyanxiong.ssm.mapper.AdminMapper;
+import com.sunyanxiong.ssm.mapper.MealseriesMapper;
 import com.sunyanxiong.ssm.po.Admin;
+import com.sunyanxiong.ssm.po.Mealseries;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Description: 测试数据
@@ -38,4 +41,16 @@ public class DatesourceTest {
         Admin admin = adminMapper.findAdmin(new Admin());
         System.out.println(admin);
     }
+    // 测试查询菜系列表
+    @Test
+    public void testFindMealseries() throws Exception {
+        MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
+
+       /* Mealseries mealseries = new Mealseries();
+        mealseries.setSeriesname("土");*/
+
+       List<Mealseries>  mealseriestest = mealseriesMapper.findMealseries(null);
+        System.out.println(mealseriestest);
+    }
+
 }

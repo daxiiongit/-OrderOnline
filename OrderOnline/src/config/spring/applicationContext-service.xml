@@ -10,5 +10,7 @@
 
     <!-- 配置AdminService接口 -->
     <bean id="adminService" class="com.sunyanxiong.ssm.service.impl.AdminServiceImpl"></bean>
+    <!-- 配置MealseriesService接口 -->
+    <bean id="sealseriesService" class="com.sunyanxiong.ssm.service.impl.MealseriesServiceImpl"/>
 
 </beans>

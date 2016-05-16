@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyanxiong.ssm.mapper.MealseriesMapper">
+
+    <sql id="query_series_where">
+        <if test="seriesname != null and seriesname != '' ">
+            AND mealseries.seriesname LIKE '%${seriesname}%'
+        </if>
+    </sql>
+
+    <select id="findMealseries" parameterType="mealseries" resultType="mealseries">
+        select * from mealseries
+         <where>
+             <include refid="query_series_where"></include>
+         </where>
+    </select>
+
+</mapper>
