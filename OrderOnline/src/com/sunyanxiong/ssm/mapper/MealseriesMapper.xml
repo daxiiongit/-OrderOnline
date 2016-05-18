@@ -38,6 +38,11 @@
         select * from mealseries where id = #{id}
     </select>
 
+    <!-- ********* -->
+    <!-- 根据id删除菜系 -->
+    <delete id="deleteMealseries" parameterType="int">
+        DELETE FROM mealseries WHERE id = #{id}
+    </delete>
 
 
 </mapper>

@@ -22,4 +22,7 @@ public interface MealseriesService {
     // 根据id查找菜系
     MealseriesCustom findMealseriesById(int id) throws Exception;
 
+    // 根据id删除菜系
+    void deleteMealseries(int id)throws Exception;
+
 }

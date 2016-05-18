@@ -71,4 +71,11 @@ public class MealseriesController {
         return "redirect:query_mealseries.action";
     }
 
+    // 根据id删除菜系
+    @RequestMapping("/delete_mealseries")
+    public String deleteMealseries(@RequestParam(value = "id") int id) throws Exception {
+        mealseriesService.deleteMealseries(id);
+        // 重定向到显示菜系列表
+        return "redirect:query_mealseries.action";
+    }
 }

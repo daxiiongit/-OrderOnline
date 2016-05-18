@@ -84,7 +84,7 @@
                 <td>${listMealseries.id}</td>
                 <td>${listMealseries.seriesname}</td>
                 <td><a href="to_updatems.action?id=${listMealseries.id}" class="tablelink" target="rightFrame">修改</a>
-                    <a href="#" class="tablelink">删除</a></td>
+                    <a href="javascript:void(0)" class="tablelink" id="deletems" name="deletems" onclick="deletems(${listMealseries.id});">删除</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -129,6 +129,17 @@
 
 <script type="text/javascript">
     $('.tablelist tbody tr:odd').addClass('odd');
+
+    // 验证是否删除菜系
+    function deletems(id){
+        if(confirm("确定要删除么？")){
+            window.location.href = "delete_mealseries.action?id=" + id;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 </script>
 
 </body>

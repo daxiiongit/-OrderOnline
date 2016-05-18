@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyanxiong.ssm.mapper.MealMapper">
+
+    <!-- ********* -->
+    <!-- 查询全部餐品
+        查询全部餐品的时候，不需要添加查询参数，
+        一个菜品只能属于一个菜系，一对一关系
+     -->
+    <resultMap id="mealReslutMap" type="mealCustom">
+        <!-- 指定主表的唯一标识 -->
+        <id column="id" property="id"/>
+
+        <result column="mealseriesid" property="mealseriesid"/>
+        <result column="mealname" property="mealname"/>
+        <result column="mealprice" property="mealprice"/>
+
+        <!-- 关联表 -->
+        <association property="mealseriesCustom" javaType="mealseriesCustom">
+            <!-- 关联表标识id -->
+            <id column="mealseriesid" property="id"/>
+            <result column="seriesname" property="seriesname"/>
+        </association>
+
+    </resultMap>
+
+    <select id="findAllMeal" resultMap="mealReslutMap">
+        select meal.id,
+               meal.mealseriesid,
+               meal.mealname,
+               meal.mealprice,
+               mealseries.seriesname
+               from meal,mealseries
+               where meal.mealseriesid = mealseries.id
+    </select>
+
+</mapper>

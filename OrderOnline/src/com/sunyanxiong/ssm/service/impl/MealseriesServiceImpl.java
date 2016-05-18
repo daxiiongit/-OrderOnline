@@ -42,4 +42,9 @@ public class MealseriesServiceImpl implements MealseriesService {
     public MealseriesCustom findMealseriesById(int id) throws Exception {
         return mealseriesMapper.findMealseriesById(id);
     }
+
+    @Override
+    public void deleteMealseries(int id) throws Exception {
+        mealseriesMapper.deleteMealseries(id);
+    }
 }

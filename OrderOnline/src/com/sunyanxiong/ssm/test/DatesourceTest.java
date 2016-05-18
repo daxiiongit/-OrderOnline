@@ -1,10 +1,12 @@
 package com.sunyanxiong.ssm.test;
 
 import com.sunyanxiong.ssm.mapper.AdminMapper;
+import com.sunyanxiong.ssm.mapper.MealMapper;
 import com.sunyanxiong.ssm.mapper.MealseriesMapper;
 import com.sunyanxiong.ssm.po.Admin;
 import com.sunyanxiong.ssm.po.Mealseries;
 import com.sunyanxiong.ssm.po.MealseriesCustom;
+import com.sunyanxiong.ssm.vo.QueryVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -80,6 +82,21 @@ public class DatesourceTest {
         MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
         MealseriesCustom mealseriesCustom = mealseriesMapper.findMealseriesById(2);
         System.out.println(mealseriesCustom.getSeriesname());
+    }
+
+    // 根据id删除菜系
+    @Test
+    public void testDeleteMealseries() throws Exception {
+        MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
+        mealseriesMapper.deleteMealseries(1);
+    }
+
+    // 查询菜品列表
+    @Test
+    public void testFindAllMeal() throws Exception {
+        MealMapper mealMapper = (MealMapper) applicationContext.getBean("mealMapper");
+        List<QueryVo> mealList =  mealMapper.findAllMeal();
+        System.out.println(mealList);
     }
 
 }

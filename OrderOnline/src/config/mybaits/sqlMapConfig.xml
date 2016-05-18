@@ -10,6 +10,9 @@
         <typeAlias type="com.sunyanxiong.ssm.po.Admin" alias="admin"></typeAlias>
         <typeAlias type="com.sunyanxiong.ssm.po.Mealseries" alias="mealseries"></typeAlias>
         <typeAlias type="com.sunyanxiong.ssm.po.MealseriesCustom" alias="mealseriesCustom"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.po.MealCustom" alias="mealCustom"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.vo.QueryVo" alias="queryVo"></typeAlias>
+
     </typeAliases>
 
     <mappers>
