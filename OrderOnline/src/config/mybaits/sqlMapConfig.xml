@@ -9,6 +9,7 @@
        <!-- <package name="com.sunyanxiong.ssm.po"/>-->
         <typeAlias type="com.sunyanxiong.ssm.po.Admin" alias="admin"></typeAlias>
         <typeAlias type="com.sunyanxiong.ssm.po.Mealseries" alias="mealseries"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.po.MealseriesCustom" alias="mealseriesCustom"></typeAlias>
     </typeAliases>
 
     <mappers>

@@ -4,17 +4,40 @@
 
 <mapper namespace="com.sunyanxiong.ssm.mapper.MealseriesMapper">
 
+    <!-- ********* -->
+    <!-- 查询菜系列表动态sql -->
     <sql id="query_series_where">
         <if test="seriesname != null and seriesname != '' ">
             AND mealseries.seriesname LIKE '%${seriesname}%'
         </if>
     </sql>
-
+    <!-- 查询菜系列表动态 -->
     <select id="findMealseries" parameterType="mealseries" resultType="mealseries">
         select * from mealseries
          <where>
              <include refid="query_series_where"></include>
          </where>
     </select>
+
+    <!-- ********* -->
+    <!-- 更新菜系列表 -->
+    <update id="updateMealseries" parameterType="mealseriesCustom">
+        update mealseries set mealseries.seriesname = #{seriesname}
+         WHERE mealseries.id = #{id}
+    </update>
+
+    <!-- ********* -->
+    <!-- 新增数据 -->
+    <insert id="saveMealseries" parameterType="java.lang.String">
+        insert into mealseries(seriesname) value(#{seriesname})
+    </insert>
+
+    <!-- ********* -->
+    <!-- 根据id查找菜系 -->
+    <select id="findMealseriesById" parameterType="int" resultType="mealseriesCustom">
+        select * from mealseries where id = #{id}
+    </select>
+
+
 
 </mapper>

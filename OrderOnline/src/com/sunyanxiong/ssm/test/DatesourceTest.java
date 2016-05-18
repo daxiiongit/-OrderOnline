@@ -4,6 +4,7 @@ import com.sunyanxiong.ssm.mapper.AdminMapper;
 import com.sunyanxiong.ssm.mapper.MealseriesMapper;
 import com.sunyanxiong.ssm.po.Admin;
 import com.sunyanxiong.ssm.po.Mealseries;
+import com.sunyanxiong.ssm.po.MealseriesCustom;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -51,6 +52,34 @@ public class DatesourceTest {
 
        List<Mealseries>  mealseriestest = mealseriesMapper.findMealseries(null);
         System.out.println(mealseriestest);
+    }
+
+    // 测试更新菜系UpdateMealseries
+    // 测试查询菜系列表
+    @Test
+    public void testUpdateMealseries() throws Exception {
+        MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
+
+        MealseriesCustom mealseriesCustom = new MealseriesCustom();
+        mealseriesCustom.setId(1);
+        mealseriesCustom.setSeriesname("猪肉");
+
+        mealseriesMapper.updateMealseries(mealseriesCustom);
+    }
+
+    // 测试新增菜系
+    @Test
+    public void testSaveMealseries() throws Exception{
+        MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
+        mealseriesMapper.saveMealseries("卤肉");
+    }
+
+    // 根据id查找菜系
+    @Test
+    public void testFindMealseriesById() throws Exception {
+        MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
+        MealseriesCustom mealseriesCustom = mealseriesMapper.findMealseriesById(2);
+        System.out.println(mealseriesCustom.getSeriesname());
     }
 
 }
