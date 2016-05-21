@@ -5,6 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -78,8 +79,8 @@
                 <td>${listMeal.mealname}</td>
                 <td>${listMeal.mealprice}</td>
                 <td>${listMeal.mealseriesCustom.seriesname}</td>
-                <td><a href="to_updatems.action?id=${listMealseries.id}" class="tablelink" target="rightFrame">修改</a>
-                    <a href="javascript:void(0)" class="tablelink" id="deletems" name="deletems" onclick="deletems(${listMealseries.id});">删除</a></td>
+                <td><a href="toUpdateMeal.action?id=${listMeal.id}" class="tablelink" target="rightFrame">修改</a>
+                    <a href="javascript:void(0)" class="tablelink" name="deleteml" onclick="deleteml(${listMeal.id});">删除</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -126,9 +127,9 @@
     $('.tablelist tbody tr:odd').addClass('odd');
 
     // 验证是否删除菜系
-    function deletems(id){
+    function deleteml(id){
         if(confirm("确定要删除么？")){
-            window.location.href = "delete_mealseries.action?id=" + id;
+            window.location.href = "delete_meal.action?id=" + id;
             return true;
         }else{
             return false;

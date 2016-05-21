@@ -1,10 +1,7 @@
 package com.sunyanxiong.ssm.service.impl;
 
 import com.sunyanxiong.ssm.mapper.MealMapper;
-import com.sunyanxiong.ssm.mapper.MealseriesMapper;
 import com.sunyanxiong.ssm.po.MealCustom;
-import com.sunyanxiong.ssm.po.Mealseries;
-import com.sunyanxiong.ssm.po.MealseriesCustom;
 import com.sunyanxiong.ssm.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +30,21 @@ public class MealServiceImpl implements MealService {
     public void saveMeal(MealCustom mealCustom) throws Exception {
         // 执行保存操作
         mealMapper.saveMeal(mealCustom);
+    }
+
+    @Override
+    public void updateMeal(MealCustom mealCustom) throws Exception {
+        // 执行修改操作
+        mealMapper.updateMeal(mealCustom);
+    }
+
+    @Override
+    public MealCustom findMealById(int id) throws Exception {
+        return mealMapper.findMealById(id);
+    }
+
+    @Override
+    public void deleteMealById(int id) throws Exception {
+        mealMapper.deleteMealById(id);
     }
 }

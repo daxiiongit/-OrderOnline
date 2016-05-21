@@ -54,5 +54,28 @@
                    #{mealimage})
     </insert>
 
+    <!-- ********* -->
+    <!-- 修改菜品 -->
+    <update id="updateMeal" parameterType="mealCustom">
+        update meal set meal.mealseriesid = #{mealseriesid},
+                meal.mealname = #{mealname},
+                meal.mealsummarize = #{mealsummarize},
+                meal.mealdescription = #{mealdescription},
+                meal.mealprice = #{mealprice},
+                meal.mealimage = #{mealimage}
+                where meal.id = #{id}
+    </update>
+
+    <!-- 通过id查找菜品信息 -->
+    <select id="findMealById" parameterType="int" resultType="mealCustom">
+        SELECT * FROM meal where meal.id = #{id}
+    </select>
+
+    <!-- ********* -->
+    <!-- 删除菜品信息 -->
+    <delete id="deleteMealById" parameterType="int">
+        DELETE FROM meal WHERE id = #{id}
+    </delete>
+
 
 </mapper>

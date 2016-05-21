@@ -16,4 +16,13 @@ public interface MealMapper {
 
     // 新增菜品
     void saveMeal(MealCustom mealCustom) throws Exception;
+
+    // 修改菜品
+    void updateMeal(MealCustom mealCustom) throws Exception;
+
+    // 根据id查找菜品信息
+    MealCustom findMealById(int id) throws Exception;
+
+    // 删除菜品信息
+    void deleteMealById(int id) throws Exception;
 }

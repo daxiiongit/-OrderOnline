@@ -8,6 +8,7 @@ import com.sunyanxiong.ssm.service.MealseriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,11 +51,42 @@ public class MealControlelr {
     public String saveMeal(MealCustom mealCustom) throws Exception{
 
         System.out.println(mealCustom);
+        // 通过id查找菜品信息
+
 
         mealService.saveMeal(mealCustom);
         return "redirect:query_meal.action";
 
     }
 
+    // 到达修改页面
+    @RequestMapping(value = "/toUpdateMeal")
+    public String toUpdateMeal(Model model,@RequestParam(value = "id") int id) throws Exception {
 
+        System.out.println(id);
+        MealCustom mealCustom = mealService.findMealById(id);
+        model.addAttribute("mealCustom",mealCustom);
+
+        System.out.println(mealCustom);
+
+        // 需要做级联
+        List<Mealseries> msList = mealseriesService.findMealseries(null);
+        model.addAttribute("msList",msList);
+
+        return "/admin/update_meal";
+    }
+
+    // 更新菜品操作
+    @RequestMapping(value = "/updatemeal")
+    public String updateMeal(MealCustom mealCustom) throws Exception{
+        mealService.updateMeal(mealCustom);
+        return "redirect:query_meal.action";
+    }
+
+    // 删除菜品
+    @RequestMapping(value = "/delete_meal")
+    public String deleteMeal(@RequestParam(value = "id") int id) throws Exception{
+        mealService.deleteMealById(id);
+        return "redirect:query_meal.action";
+    }
 }
