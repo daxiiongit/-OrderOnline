@@ -3,9 +3,7 @@ package com.sunyanxiong.ssm.test;
 import com.sunyanxiong.ssm.mapper.AdminMapper;
 import com.sunyanxiong.ssm.mapper.MealMapper;
 import com.sunyanxiong.ssm.mapper.MealseriesMapper;
-import com.sunyanxiong.ssm.po.Admin;
-import com.sunyanxiong.ssm.po.Mealseries;
-import com.sunyanxiong.ssm.po.MealseriesCustom;
+import com.sunyanxiong.ssm.po.*;
 import com.sunyanxiong.ssm.vo.QueryVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -30,7 +28,7 @@ public class DatesourceTest {
     private ApplicationContext applicationContext;
 
     @Before
-    public void before(){
+    public void before() {
 
         // 读取spring配置文件
         applicationContext = new ClassPathXmlApplicationContext("classpath:config/spring/applicationContext-*.xml");
@@ -44,6 +42,7 @@ public class DatesourceTest {
         Admin admin = adminMapper.findAdmin(new Admin());
         System.out.println(admin);
     }
+
     // 测试查询菜系列表
     @Test
     public void testFindMealseries() throws Exception {
@@ -52,8 +51,10 @@ public class DatesourceTest {
        /* Mealseries mealseries = new Mealseries();
         mealseries.setSeriesname("土");*/
 
-       List<Mealseries>  mealseriestest = mealseriesMapper.findMealseries(null);
-        System.out.println(mealseriestest);
+        List<Mealseries> mealseriesList = mealseriesMapper.findMealseries(null);
+        for (Mealseries ms : mealseriesList) {
+            System.out.println(ms.getSeriesname());
+        }
     }
 
     // 测试更新菜系UpdateMealseries
@@ -71,7 +72,7 @@ public class DatesourceTest {
 
     // 测试新增菜系
     @Test
-    public void testSaveMealseries() throws Exception{
+    public void testSaveMealseries() throws Exception {
         MealseriesMapper mealseriesMapper = (MealseriesMapper) applicationContext.getBean("mealseriesMapper");
         mealseriesMapper.saveMealseries("卤肉");
     }
@@ -95,8 +96,31 @@ public class DatesourceTest {
     @Test
     public void testFindAllMeal() throws Exception {
         MealMapper mealMapper = (MealMapper) applicationContext.getBean("mealMapper");
-        List<QueryVo> mealList =  mealMapper.findAllMeal();
-        System.out.println(mealList);
+        List<MealCustom> mealList = mealMapper.findAllMeal();
+        for (MealCustom list : mealList) {
+            System.out.println(list.getMealseriesCustom().getSeriesname());
+        }
+
+    }
+
+    // 测试新增菜品
+    @Test
+    public void testSaveMeal() throws Exception {
+
+        MealMapper mealMapper = (MealMapper) applicationContext.getBean("mealMapper");
+        MealCustom mealCustom = new MealCustom();
+        mealCustom.setMealname("青菜");
+        /*MealseriesCustom mealseriesCustom = new MealseriesCustom();
+        mealseriesCustom.setId(1);
+        mealCustom.setMealseriesCustom(mealseriesCustom);*/
+        mealCustom.setMealseriesid(2);
+        mealCustom.setMealdescription("芹菜很好吃");
+        mealCustom.setMealsummarize("没有描述");
+        mealCustom.setMealprice(2.5);
+        mealCustom.setMealimage("fafadsfdasf");
+
+        // 保存
+        mealMapper.saveMeal(mealCustom);
     }
 
 }

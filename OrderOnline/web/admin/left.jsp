@@ -103,38 +103,35 @@ $(function(){
     </dd>
         
     
-  <%--  <dd>
+   <dd>
     <div class="title">
-    <span><img src="/admin/images/leftico02.png" /></span>其他设置
+    <span><img src="/admin/images/leftico02.png" /></span>菜品管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="/admin/flow.jsp" target="rightFrame">流程图</a><i></i></li>
-        <li><cite></cite><a href="/admin/project.jsp" target="rightFrame">项目申报</a><i></i></li>
-        <li><cite></cite><a href="/admin/search.jsp" target="rightFrame">档案列表显示</a><i></i></li>
-        <li><cite></cite><a href="/admin/tech.jsp" target="rightFrame">技术支持</a><i></i></li>
-        </ul>     
-    </dd> 
-    
-    
-    <dd><div class="title"><span><img src="/admin/images/leftico03.png" /></span>编辑器</div>
-    <ul class="menuson">
-        <li><cite></cite><a href="#">自定义</a><i></i></li>
-        <li><cite></cite><a href="#">常用资料</a><i></i></li>
-        <li><cite></cite><a href="#">信息列表</a><i></i></li>
-        <li><cite></cite><a href="#">其他</a><i></i></li>
-    </ul>    
-    </dd>  
-    
-    
-    <dd><div class="title"><span><img src="/admin/images/leftico04.png" /></span>日期管理</div>
-    <ul class="menuson">
-        <li><cite></cite><a href="#">自定义</a><i></i></li>
-        <li><cite></cite><a href="#">常用资料</a><i></i></li>
-        <li><cite></cite><a href="#">信息列表</a><i></i></li>
-        <li><cite></cite><a href="#">其他</a><i></i></li>
-    </ul>
-    
-    </dd>   --%>
+        <li><cite></cite><a href="${pageContext.request.contextPath }/query_meal.action" target="rightFrame">菜品列表</a><i></i></li>
+        <li><cite></cite><a href="#" target="rightFrame">接口设置</a><i></i></li>
+    </dd>
+
+		<%--
+       <dd><div class="title"><span><img src="/admin/images/leftico03.png" /></span>编辑器</div>
+       <ul class="menuson">
+           <li><cite></cite><a href="#">自定义</a><i></i></li>
+           <li><cite></cite><a href="#">常用资料</a><i></i></li>
+           <li><cite></cite><a href="#">信息列表</a><i></i></li>
+           <li><cite></cite><a href="#">其他</a><i></i></li>
+       </ul>
+       </dd>
+
+
+       <dd><div class="title"><span><img src="/admin/images/leftico04.png" /></span>日期管理</div>
+       <ul class="menuson">
+           <li><cite></cite><a href="#">自定义</a><i></i></li>
+           <li><cite></cite><a href="#">常用资料</a><i></i></li>
+           <li><cite></cite><a href="#">信息列表</a><i></i></li>
+           <li><cite></cite><a href="#">其他</a><i></i></li>
+       </ul>
+
+       </dd>   --%>
     
     </dl>
     

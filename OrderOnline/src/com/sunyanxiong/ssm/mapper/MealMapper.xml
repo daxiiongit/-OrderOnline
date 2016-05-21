@@ -17,6 +17,7 @@
         <result column="mealname" property="mealname"/>
         <result column="mealprice" property="mealprice"/>
 
+
         <!-- 关联表 -->
         <association property="mealseriesCustom" javaType="mealseriesCustom">
             <!-- 关联表标识id -->
@@ -35,5 +36,23 @@
                from meal,mealseries
                where meal.mealseriesid = mealseries.id
     </select>
+
+    <!-- ********* -->
+    <!-- 新增菜品 -->
+    <insert id="saveMeal" parameterType="mealCustom">
+        insert into meal(mealseriesid,
+                    mealname,
+                    mealsummarize,
+                    mealdescription,
+                    mealprice,
+                    mealimage)
+	         value (#{mealseriesid},
+                   #{mealname},
+                   #{mealsummarize},
+                   #{mealdescription},
+                   #{mealprice},
+                   #{mealimage})
+    </insert>
+
 
 </mapper>
