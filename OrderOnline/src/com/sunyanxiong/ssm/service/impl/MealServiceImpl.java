@@ -21,10 +21,17 @@ public class MealServiceImpl implements MealService {
     @Autowired
     private MealMapper mealMapper;
 
-    @Override
+    /*@Override
     public List<MealCustom> findAllMeal() throws Exception {
         return mealMapper.findAllMeal();
+    }*/
+
+
+    @Override
+    public List<MealCustom> findAllMeal(MealCustom mealCustom) throws Exception {
+        return mealMapper.findAllMeal(mealCustom);
     }
+
 
     @Override
     public void saveMeal(MealCustom mealCustom) throws Exception {

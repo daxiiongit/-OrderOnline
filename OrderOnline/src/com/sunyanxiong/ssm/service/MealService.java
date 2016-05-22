@@ -11,8 +11,11 @@ import java.util.List;
  */
 public interface MealService {
 
+    /*// 查询全部菜品列表
+    List<MealCustom> findAllMeal () throws Exception;*/
+
     // 查询全部菜品列表
-    List<MealCustom> findAllMeal () throws Exception;
+    List<MealCustom> findAllMeal (MealCustom mealCustom) throws Exception;
 
     // 新增菜系
     void saveMeal(MealCustom mealCustom) throws Exception;

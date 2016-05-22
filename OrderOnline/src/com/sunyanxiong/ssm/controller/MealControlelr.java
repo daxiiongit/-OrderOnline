@@ -8,7 +8,6 @@ import com.sunyanxiong.ssm.service.MealseriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,7 +31,30 @@ public class MealControlelr {
     // 显示所有菜品信息列表
     @RequestMapping(value = "/query_meal")
     public String queryAllMeal(Model model) throws Exception {
-        List<MealCustom> mealList = mealService.findAllMeal();
+        List<MealCustom> mealList = mealService.findAllMeal(null);
+        model.addAttribute("mealList",mealList);
+        return "/admin/query_meal";
+    }
+
+    // 根据输入字段模糊查询菜品
+    @RequestMapping(value = "/query_mealname")
+    public String queryMealByName(Model model,@RequestParam(value = "mealname") String mealname,
+                                  @RequestParam(value = "seriesname") String seriesname
+                                  ) throws Exception {
+        // 处理 seriesname = "" or null
+        if (seriesname == null || seriesname == ""){
+            seriesname = null;
+        }
+        // 添加模糊查询条件
+        MealCustom mealCustom = new MealCustom();
+        mealCustom.setMealname(mealname);
+
+        // 添加精确查找条件
+        MealseriesCustom mealseriesCustom = new MealseriesCustom();
+        mealseriesCustom.setSeriesname(seriesname);
+        mealCustom.setMealseriesCustom(mealseriesCustom);
+
+        List<MealCustom> mealList = mealService.findAllMeal(mealCustom);
         model.addAttribute("mealList",mealList);
         return "/admin/query_meal";
     }

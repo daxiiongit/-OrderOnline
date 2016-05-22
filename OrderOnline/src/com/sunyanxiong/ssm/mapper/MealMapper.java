@@ -11,8 +11,11 @@ import java.util.List;
  */
 public interface MealMapper {
 
-    // 查询全部菜品列表
-    List<MealCustom> findAllMeal () throws Exception;
+    /*// 查询全部菜品列表
+    List<MealCustom> findAllMeal () throws Exception;*/
+
+    // 查询全部菜品列表,并且加上模糊查询操作
+    List<MealCustom> findAllMeal (MealCustom mealCustom) throws Exception;
 
     // 新增菜品
     void saveMeal(MealCustom mealCustom) throws Exception;

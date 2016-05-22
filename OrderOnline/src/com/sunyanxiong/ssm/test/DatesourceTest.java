@@ -95,7 +95,7 @@ public class DatesourceTest {
     }
 
     // 查询菜品列表
-    @Test
+    /*@Test
     public void testFindAllMeal() throws Exception {
         MealMapper mealMapper = (MealMapper) applicationContext.getBean("mealMapper");
         List<MealCustom> mealList = mealMapper.findAllMeal();
@@ -103,7 +103,27 @@ public class DatesourceTest {
             System.out.println(list.getMealseriesCustom().getSeriesname());
         }
 
+    }*/
+
+    @Test
+    public void testFindAllMeal() throws Exception {
+        MealMapper mealMapper = (MealMapper) applicationContext.getBean("mealMapper");
+
+        MealCustom mealCustom = new MealCustom();
+        mealCustom.setMealname("ff");
+
+        MealseriesCustom mealseriesCustom = new MealseriesCustom();
+        mealseriesCustom.setSeriesname(null);
+
+        mealCustom.setMealseriesCustom(mealseriesCustom);
+
+        List<MealCustom> mealList = mealMapper.findAllMeal(mealCustom);
+        for (MealCustom list : mealList) {
+            System.out.println(list.getMealseriesCustom().getSeriesname());
+        }
+
     }
+
 
     // 测试新增菜品
     @Test

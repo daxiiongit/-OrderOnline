@@ -4,6 +4,22 @@
 
 <mapper namespace="com.sunyanxiong.ssm.mapper.MealMapper">
 
+    <!-- ************************ -->
+    <!-- 根据输入字符串模糊查询菜品 -->
+    <sql id="query_meal_where">
+        AND meal.mealseriesid = mealseries.id
+        <if test="mealname != null and mealname != '' ">
+            AND meal.mealname LIKE '%${mealname}%'
+        </if>
+
+        <!-- 模糊查询条件 -->
+        <if test="mealseriesCustom != null">
+            <if test="mealseriesCustom.seriesname != null">
+                AND mealseries.seriesname = #{mealseriesCustom.seriesname}
+            </if>
+        </if>
+    </sql>
+
     <!-- ********* -->
     <!-- 查询全部餐品
         查询全部餐品的时候，不需要添加查询参数，
@@ -27,14 +43,17 @@
 
     </resultMap>
 
-    <select id="findAllMeal" resultMap="mealReslutMap">
+    <select id="findAllMeal" parameterType="mealCustom" resultMap="mealReslutMap">
         select meal.id,
                meal.mealseriesid,
                meal.mealname,
                meal.mealprice,
                mealseries.seriesname
                from meal,mealseries
-               where meal.mealseriesid = mealseries.id
+
+               <where>
+                   <include refid="query_meal_where"></include>
+               </where>
     </select>
 
     <!-- ********* -->
