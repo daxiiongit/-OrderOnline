@@ -1,0 +1,41 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyanxiong.ssm.mapper.OrdersMapper">
+    <!--*****************-->
+    <!-- 查询全部订单信息 -->
+    <resultMap id="allOrders" type="orders">
+        <!-- orders:id -->
+        <id column="id" property="id"/>
+        <result column="userid" property="userid"/>
+        <result column="ordertime" property="ordertime"/>
+        <result column="orderstate" property="orderstate"/>
+        <result column="orderprice" property="orderprice"/>
+        <!-- users -->
+        <association property="users" column="users" javaType="users">
+            <!-- users:id -->
+            <id column="id" property="id"/>
+            <result column="loginname" property="loginname"/>
+        </association>
+    </resultMap>
+    <select id="findAllOrders" resultMap="allOrders">
+        select orders.id,
+               orders.userid,
+               orders.ordertime,
+               orders.orderstate,
+               orders.orderprice,
+               users.loginname
+               from orders,users
+               where orders.userid = users.id
+    </select>
+
+    <!--*****************-->
+    <!-- 修改订单状态 -->
+    <update id="alertState" parameterType="orders">
+        update orders set orders.orderstate = #{orderstate}
+		              where orders.id = #{id}
+    </update>
+
+
+</mapper>

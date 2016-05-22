@@ -15,4 +15,7 @@
     <!-- 配置MealService接口 -->
     <bean id="mealService" class="com.sunyanxiong.ssm.service.impl.MealServiceImpl"></bean>
 
+    <!-- 订单OrdersService接口 -->
+    <bean id="ordersService" class="com.sunyanxiong.ssm.service.impl.OrdersServiceImpl"></bean>
+
 </beans>

@@ -3,7 +3,9 @@ package com.sunyanxiong.ssm.test;
 import com.sunyanxiong.ssm.mapper.AdminMapper;
 import com.sunyanxiong.ssm.mapper.MealMapper;
 import com.sunyanxiong.ssm.mapper.MealseriesMapper;
+import com.sunyanxiong.ssm.mapper.OrdersMapper;
 import com.sunyanxiong.ssm.po.*;
+import com.sunyanxiong.ssm.vo.OrdersVo;
 import com.sunyanxiong.ssm.vo.QueryVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -121,6 +123,34 @@ public class DatesourceTest {
 
         // 保存
         mealMapper.saveMeal(mealCustom);
+    }
+
+    // 查询订单信息
+    @Test
+    public void testFindAllOrders() throws Exception{
+        OrdersMapper ordersMapper = (OrdersMapper) applicationContext.getBean("ordersMapper");
+
+        OrdersVo ordersVo = new OrdersVo();
+        ordersVo.setOrdersList(ordersMapper.findAllOrders());
+//        List<Orders> ordersList = ordersMapper.findAllOrders();
+
+        System.out.println(ordersVo);
+       // System.out.println(ordersVo.getOrdersList());
+
+        for (Orders os : ordersVo.getOrdersList()){
+            System.out.println(os);
+        }
+    }
+
+    // 修改订单状态
+    @Test
+    public void testAlertState() throws Exception {
+        OrdersMapper ordersMapper = (OrdersMapper) applicationContext.getBean("ordersMapper");
+        Orders orders = new Orders();
+        orders.setId(1);
+        orders.setOrderstate(3);
+
+        ordersMapper.alertState(orders);
     }
 
 }

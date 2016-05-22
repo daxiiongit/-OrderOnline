@@ -58,13 +58,13 @@ $(function(){
     
     <dl class="leftmenu">
         
-    <dd>
+    <%--<dd>
     <div class="title">
     <span><img src="/admin/images/leftico01.png" /></span>菜系管理
     </div>
     	<ul class="menuson">
         
-       <%-- <li>
+       &lt;%&ndash; <li>
             <div class="header">
             <cite></cite>
             <a href="/admin/index.jsp" target="rightFrame">首页模版</a>
@@ -76,7 +76,7 @@ $(function(){
             <li><a href="javascript:;">基本内容</a></li>
             <li><a href="javascript:;">自定义</a></li>
             </ul>
-        </li>--%>
+        </li>&ndash;%&gt;
         
         <li>
             <div class="header">
@@ -90,7 +90,7 @@ $(function(){
             </ul>
         </li>
         
-        <%--<li class="active"><cite></cite><a href="/admin/right.jsp" target="rightFrame">数据列表</a><i></i></li>
+        &lt;%&ndash;<li class="active"><cite></cite><a href="/admin/right.jsp" target="rightFrame">数据列表</a><i></i></li>
         <li><cite></cite><a href="/admin/imgtable.jsp" target="rightFrame">图片数据表</a><i></i></li>
         <li><cite></cite><a href="/admin/form.jsp" target="rightFrame">添加编辑</a><i></i></li>
         <li><cite></cite><a href="/admin/imglist.jsp" target="rightFrame">图片列表</a><i></i></li>
@@ -98,11 +98,24 @@ $(function(){
         <li><cite></cite><a href="/admin/tools.jsp" target="rightFrame">常用工具</a><i></i></li>
         <li><cite></cite><a href="/admin/filelist.jsp" target="rightFrame">信息管理</a><i></i></li>
         <li><cite></cite><a href="/admin/tab.jsp" target="rightFrame">Tab页</a><i></i></li>
-        <li><cite></cite><a href="/admin/error.jsp" target="rightFrame">404页面</a><i></i></li>--%>
+        <li><cite></cite><a href="/admin/error.jsp" target="rightFrame">404页面</a><i></i></li>&ndash;%&gt;
         </ul>    
+    </dd>--%>
+
+    <%-- 菜系管理 --%>
+
+    <dd>
+        <div class="title">
+            <span><img src="/admin/images/leftico01.png" /></span>菜系管理
+        </div>
+        <ul class="menuson">
+            <li><cite></cite><a href="${pageContext.request.contextPath }/query_mealseries.action" target="rightFrame">显示所有菜系</a><i></i></li>
+            <li><cite></cite><a href="#" target="rightFrame">接口设置</a><i></i></li>
+        </ul>
     </dd>
-        
-    
+
+    <%-- 菜品管理 --%>
+
    <dd>
     <div class="title">
     <span><img src="/admin/images/leftico02.png" /></span>菜品管理
@@ -110,6 +123,20 @@ $(function(){
     <ul class="menuson">
         <li><cite></cite><a href="${pageContext.request.contextPath }/query_meal.action" target="rightFrame">菜品列表</a><i></i></li>
         <li><cite></cite><a href="#" target="rightFrame">接口设置</a><i></i></li>
+
+    </ul>
+    </dd>
+
+    <%-- 订单管理 --%>
+
+    <dd>
+        <div class="title">
+            <span><img src="/admin/images/leftico03.png" /></span>订单管理
+        </div>
+        <ul class="menuson">
+            <li><cite></cite><a href="${pageContext.request.contextPath }/queryOrders.action" target="rightFrame">菜品列表</a><i></i></li>
+            <li><cite></cite><a href="#" target="rightFrame">接口设置</a><i></i></li>
+        </ul>
     </dd>
 
 		<%--

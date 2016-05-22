@@ -13,6 +13,10 @@
         <typeAlias type="com.sunyanxiong.ssm.po.MealCustom" alias="mealCustom"></typeAlias>
         <typeAlias type="com.sunyanxiong.ssm.vo.QueryVo" alias="queryVo"></typeAlias>
 
+        <typeAlias type="com.sunyanxiong.ssm.vo.OrdersVo" alias="ordersVo"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.po.Orders" alias="orders"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.po.Users" alias="users"></typeAlias>
+
     </typeAliases>
 
     <mappers>
