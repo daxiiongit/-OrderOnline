@@ -25,8 +25,8 @@ public class OrdersServiceImpl implements OrdersService {
     private OrdersMapper ordersMapper;
 
     @Override
-    public List<Orders> findAllOrders() throws Exception {
-        return ordersMapper.findAllOrders();
+    public List<Orders> findAllOrders(OrdersCustom ordersCustom) throws Exception {
+        return ordersMapper.findAllOrders(ordersCustom);
     }
 
     @Override

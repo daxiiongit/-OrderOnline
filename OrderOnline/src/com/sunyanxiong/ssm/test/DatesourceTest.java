@@ -151,7 +151,11 @@ public class DatesourceTest {
         OrdersMapper ordersMapper = (OrdersMapper) applicationContext.getBean("ordersMapper");
 
         OrdersVo ordersVo = new OrdersVo();
-        ordersVo.setOrdersList(ordersMapper.findAllOrders());
+
+        OrdersCustom ordersCustom = new OrdersCustom();
+        ordersCustom.setOrderstate(2);
+
+        ordersVo.setOrdersList(ordersMapper.findAllOrders(ordersCustom));
 //        List<Orders> ordersList = ordersMapper.findAllOrders();
 
         System.out.println(ordersVo);

@@ -2,6 +2,7 @@ package com.sunyanxiong.ssm.service;
 
 import com.sunyanxiong.ssm.po.OrderdtsCustom;
 import com.sunyanxiong.ssm.po.Orders;
+import com.sunyanxiong.ssm.po.OrdersCustom;
 import com.sunyanxiong.ssm.vo.OrdersVo;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface OrdersService {
 
     // 查询订单
-    List<Orders> findAllOrders() throws  Exception;
+    List<Orders> findAllOrders(OrdersCustom ordersCustom) throws  Exception;
 
     // 修改订单状态
     void alertState(int id,int orderstate) throws Exception;

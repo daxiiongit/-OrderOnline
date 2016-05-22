@@ -1,6 +1,7 @@
 package com.sunyanxiong.ssm.controller;
 
 import com.sunyanxiong.ssm.po.OrderdtsCustom;
+import com.sunyanxiong.ssm.po.OrdersCustom;
 import com.sunyanxiong.ssm.service.OrdersService;
 import com.sunyanxiong.ssm.vo.OrdersVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,23 @@ public class OrdersController {
     @RequestMapping(value = "/queryOrders")
     public String queryOrders(Model model) throws Exception{
         OrdersVo ordersVo = new OrdersVo();
-        ordersVo.setOrdersList(ordersService.findAllOrders());
+        ordersVo.setOrdersList(ordersService.findAllOrders(null));
+        model.addAttribute("ordersVo",ordersVo);
+        return "/admin/query_orders";
+    }
+
+    // 根据订单状态查询订单列表
+    // 显示所有订单信息列表
+    @RequestMapping(value = "/query_orderstate")
+    public String queryByState(Model model,@RequestParam(value = "orderstate") int orderstate) throws Exception{
+
+        System.out.println(orderstate);
+
+        OrdersCustom ordersCustom = new OrdersCustom();
+        ordersCustom.setOrderstate(orderstate);
+
+        OrdersVo ordersVo = new OrdersVo();
+        ordersVo.setOrdersList(ordersService.findAllOrders(ordersCustom));
         model.addAttribute("ordersVo",ordersVo);
         return "/admin/query_orders";
     }

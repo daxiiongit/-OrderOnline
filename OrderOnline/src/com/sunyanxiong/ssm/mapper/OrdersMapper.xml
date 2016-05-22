@@ -5,6 +5,13 @@
 <mapper namespace="com.sunyanxiong.ssm.mapper.OrdersMapper">
     <!--*****************-->
     <!-- 查询全部订单信息 -->
+    <sql id="query_orderstate">
+        AND orders.userid = users.id
+        <if test="orderstate != '' and orderstate != null">
+          AND orders.orderstate = #{orderstate}
+        </if>
+    </sql>
+
     <resultMap id="allOrders" type="orders">
         <!-- orders:id -->
         <id column="id" property="id"/>
@@ -19,7 +26,7 @@
             <result column="loginname" property="loginname"/>
         </association>
     </resultMap>
-    <select id="findAllOrders" resultMap="allOrders">
+    <select id="findAllOrders" parameterType="ordersCustom" resultMap="allOrders">
         select orders.id,
                orders.userid,
                orders.ordertime,
@@ -27,7 +34,9 @@
                orders.orderprice,
                users.loginname
                from orders,users
-               where orders.userid = users.id
+               <where>
+                   <include refid="query_orderstate"></include>
+               </where>
     </select>
 
     <!--*****************-->
