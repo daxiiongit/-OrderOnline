@@ -1,5 +1,6 @@
 package com.sunyanxiong.ssm.vo;
 
+import com.sunyanxiong.ssm.po.OrderdtsCustom;
 import com.sunyanxiong.ssm.po.Orders;
 
 import java.util.List;
@@ -20,5 +21,16 @@ public class OrdersVo {
 
     public void setOrdersList(List<Orders> ordersList) {
         this.ordersList = ordersList;
+    }
+
+    // 查询订单详情返回结果集
+    private List<OrderdtsCustom> orderdtsCustomList;
+
+    public List<OrderdtsCustom> getOrderdtsCustomList() {
+        return orderdtsCustomList;
+    }
+
+    public void setOrderdtsCustomList(List<OrderdtsCustom> orderdtsCustomList) {
+        this.orderdtsCustomList = orderdtsCustomList;
     }
 }

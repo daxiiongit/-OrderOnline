@@ -1,8 +1,12 @@
 package com.sunyanxiong.ssm.service.impl;
 
 import com.sunyanxiong.ssm.mapper.OrdersMapper;
+import com.sunyanxiong.ssm.po.OrderdtsCustom;
 import com.sunyanxiong.ssm.po.Orders;
+import com.sunyanxiong.ssm.po.OrdersCustom;
 import com.sunyanxiong.ssm.service.OrdersService;
+import com.sunyanxiong.ssm.vo.OrdersVo;
+import com.sunyanxiong.ssm.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +36,10 @@ public class OrdersServiceImpl implements OrdersService {
         orders.setOrderstate(orderstate);
 
         ordersMapper.alertState(orders);
+    }
+
+    @Override
+    public List<OrderdtsCustom> findAllOrderdts(int id) throws Exception {
+        return ordersMapper.findAllOrderdts(id);
     }
 }

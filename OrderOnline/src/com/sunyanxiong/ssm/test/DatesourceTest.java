@@ -153,4 +153,12 @@ public class DatesourceTest {
         ordersMapper.alertState(orders);
     }
 
+    // 测试查询订单详情
+    @Test
+    public void testFindAllOrderdts()throws Exception{
+        OrdersMapper ordersMapper = (OrdersMapper) applicationContext.getBean("ordersMapper");
+        List<OrderdtsCustom> orderdtsCustomList = ordersMapper.findAllOrderdts(1);
+        System.out.println(orderdtsCustomList);
+    }
+
 }

@@ -105,7 +105,7 @@
                             完成订单
                         </c:if>
                     </a>
-                    <a href="javascript:void(0)" class="tablelink" name="deleteml" onclick="deleteml(${listMeal.id});">删除</a></td>
+                    <a href="query_orderdts.action?id=${ordersList.id}" class="tablelink" target="rightFrame">查看明细</a>
             </tr>
         </c:forEach>
         </tbody>
@@ -150,16 +150,6 @@
 
 <script type="text/javascript">
     $('.tablelist tbody tr:odd').addClass('odd');
-
-    // 验证是否删除菜系
-    function deleteml(id){
-        if(confirm("确定要删除么？")){
-            window.location.href = "delete_meal.action?id=" + id;
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 </script>
 

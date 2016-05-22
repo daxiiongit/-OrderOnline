@@ -1,6 +1,8 @@
 package com.sunyanxiong.ssm.service;
 
+import com.sunyanxiong.ssm.po.OrderdtsCustom;
 import com.sunyanxiong.ssm.po.Orders;
+import com.sunyanxiong.ssm.vo.OrdersVo;
 
 import java.util.List;
 
@@ -16,5 +18,8 @@ public interface OrdersService {
 
     // 修改订单状态
     void alertState(int id,int orderstate) throws Exception;
+
+    // 查询订单详情
+    List<OrderdtsCustom> findAllOrderdts (int id) throws Exception;
 
 }

@@ -17,6 +17,10 @@
         <typeAlias type="com.sunyanxiong.ssm.po.Orders" alias="orders"></typeAlias>
         <typeAlias type="com.sunyanxiong.ssm.po.Users" alias="users"></typeAlias>
 
+        <typeAlias type="com.sunyanxiong.ssm.po.OrdersCustom" alias="ordersCustom"></typeAlias>
+        <typeAlias type="com.sunyanxiong.ssm.po.OrderdtsCustom" alias="orderdtsCustom"></typeAlias>
+
+
     </typeAliases>
 
     <mappers>

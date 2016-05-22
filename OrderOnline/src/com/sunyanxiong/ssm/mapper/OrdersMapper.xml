@@ -37,5 +37,44 @@
 		              where orders.id = #{id}
     </update>
 
+    <!--*****************-->
+    <!-- 查看订单明细 -->
+    <resultMap id="allOrderdts" type="orderdtsCustom">
+        <!-- orderdts: -->
+        <id column="id" property="id"/>
+
+        <result column="orderid" property="orderid"/>
+        <result column="mealid" property="mealid"/>
+        <result column="price" property="price"/>
+        <result column="mealcount" property="mealcount"/>
+
+        <!-- orders: -->
+        <association property="ordersCustom" javaType="ordersCustom">
+            <id column="id" property="id"/>
+            <result column="orderprice" property="orderprice"/>
+        </association>
+
+        <!-- meal: -->
+        <association property="mealCustom" javaType="mealCustom">
+            <id column="id" property="id"/>
+            <result column="mealname" property="mealname"/>
+        </association>
+
+    </resultMap>
+
+    <select id="findAllOrderdts" parameterType="int" resultMap="allOrderdts">
+        select orderdts.id,
+               orderdts.orderid,
+               orderdts.mealid,
+               orderdts.price,
+               orderdts.mealcount,
+               orders.orderprice,
+               meal.mealname
+        from orders,orderdts,meal
+        where orderdts.mealid = meal.id
+        and orderdts.orderid = orders.id
+        and orders.id = #{id}
+    </select>
+
 
 </mapper>
