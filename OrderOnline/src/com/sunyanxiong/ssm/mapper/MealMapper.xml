@@ -54,6 +54,8 @@
                <where>
                    <include refid="query_meal_where"></include>
                </where>
+        order by meal.id
+        limit #{page.pageIndex},#{page.pageSize}
     </select>
 
     <!-- ********* -->

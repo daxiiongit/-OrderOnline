@@ -95,8 +95,20 @@
             </tr>
         </c:forEach>
         </tbody>
+        <%-- 分页公共页面 --%>
+        <%--<tr align="center">
+            <td colspan="5">
+                <a href="query_meal.action?currentPage=1">首页</a>
+                <a href="query_meal.action?currentPage=${mealCustom.page.prePage}">上页</a>
+                <a href="query_meal.action?currentPage=${mealCustom.page.nextPage}">下页</a>
+                <a href="query_meal.action?currentPage=${mealCustom.page.pageCount}">末页</a>
+                当前页${mealCustom.page.currentPage}/${mealCustom.page.pageCount}
+                &nbsp;
+                总记录数${mealCustom.page.totalCount}
+            </td>
+        </tr>--%>
+        <jsp:include page="/admin/common.jsp"/>
     </table>
-
 
 </div>
 

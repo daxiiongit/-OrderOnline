@@ -32,14 +32,23 @@ public class MealControlelr {
 
     // 显示所有菜品信息列表
     @RequestMapping(value = "/query_meal")
-    public String queryAllMeal(Model model) throws Exception {
+    public String queryAllMeal(Model model,@RequestParam(value = "currentPage") int currentPage) throws Exception {
        /* List<MealCustom> mealList = mealService.findAllMeal(null);
         model.addAttribute("mealList",mealList);
         return "/admin/query_meal";*/
 
-        // 分页查询，每页5条,采用RowBounds方式
+        // 分页查询
+        Page page = new Page();
+        page.setTotalCount(mealService.getMealCount());
+        page.setPageSize(5);
+        page.setCurrentPage(currentPage);
+        page.setPageCount(page.getPageCount());
 
-        List<MealCustom> mealList = mealService.findAllMeal(null);
+        MealCustom mealCustom = new MealCustom();
+        mealCustom.setPage(page);
+
+        List<MealCustom> mealList = mealService.findAllMeal(mealCustom);
+        model.addAttribute("mealCustom",mealCustom);
         model.addAttribute("mealList",mealList);
         return "/admin/query_meal";
     }
