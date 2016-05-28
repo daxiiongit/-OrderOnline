@@ -153,7 +153,7 @@ public class DatesourceTest {
         OrdersVo ordersVo = new OrdersVo();
 
         OrdersCustom ordersCustom = new OrdersCustom();
-        ordersCustom.setOrderstate(2);
+        ordersCustom.setOrderstate(0);
 
         ordersVo.setOrdersList(ordersMapper.findAllOrders(ordersCustom));
 //        List<Orders> ordersList = ordersMapper.findAllOrders();

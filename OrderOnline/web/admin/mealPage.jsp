@@ -1,7 +1,7 @@
 <%--
     Description: 代码
-
-    Created by daxiongit on 2016/5/15 0015.
+     
+    Created by daxiongit on 2016/5/28 0028.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
@@ -83,7 +83,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="listMeal" items="${mealList}">
+        <c:forEach var="listMeal" items="${mealVo.mealCustomList}">
             <tr>
                     <%-- <td><input name="" type="checkbox" value="" /></td>--%>
                 <td>${listMeal.id}</td>
@@ -97,6 +97,17 @@
         </tbody>
     </table>
 
+    <div>
+        <tr align="center">
+            <a href="meal_page.action?currentPage=1">首页</a>
+            <a href="meal_page.action?currentPage=${mealCustom.page.prePage}">上页</a>
+            <a href="meal_page.action?currentPage=${mealCustom.page.nextPage}">下页</a>
+            <a href="meal_page.action?currentPage=${mealCustom.page.pageCount}">末页</a>
+            当前页${mealCustom.page.currentPage}/${mealCustom.page.pageCount}
+            &nbsp;
+            总记录数${mealCustom.page.totalCount}
+        </tr>
+    </div>
 
 </div>
 
@@ -130,3 +141,4 @@
 </body>
 
 </html>
+

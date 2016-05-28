@@ -20,6 +20,7 @@
         <typeAlias type="com.sunyanxiong.ssm.po.OrdersCustom" alias="ordersCustom"></typeAlias>
         <typeAlias type="com.sunyanxiong.ssm.po.OrderdtsCustom" alias="orderdtsCustom"></typeAlias>
 
+        <typeAlias type="com.sunyanxiong.ssm.page.Page" alias="page"></typeAlias>
 
     </typeAliases>
 

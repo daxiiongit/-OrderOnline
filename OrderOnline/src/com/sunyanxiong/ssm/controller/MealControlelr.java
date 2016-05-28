@@ -1,10 +1,12 @@
 package com.sunyanxiong.ssm.controller;
 
+import com.sunyanxiong.ssm.page.Page;
 import com.sunyanxiong.ssm.po.MealCustom;
 import com.sunyanxiong.ssm.po.Mealseries;
 import com.sunyanxiong.ssm.po.MealseriesCustom;
 import com.sunyanxiong.ssm.service.MealService;
 import com.sunyanxiong.ssm.service.MealseriesService;
+import com.sunyanxiong.ssm.vo.MealVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,12 @@ public class MealControlelr {
     // 显示所有菜品信息列表
     @RequestMapping(value = "/query_meal")
     public String queryAllMeal(Model model) throws Exception {
+       /* List<MealCustom> mealList = mealService.findAllMeal(null);
+        model.addAttribute("mealList",mealList);
+        return "/admin/query_meal";*/
+
+        // 分页查询，每页5条,采用RowBounds方式
+
         List<MealCustom> mealList = mealService.findAllMeal(null);
         model.addAttribute("mealList",mealList);
         return "/admin/query_meal";
@@ -56,6 +64,11 @@ public class MealControlelr {
 
         List<MealCustom> mealList = mealService.findAllMeal(mealCustom);
         model.addAttribute("mealList",mealList);
+
+        // 查询参数回显
+        model.addAttribute("mealname",mealname);
+        model.addAttribute("seriesname",seriesname);
+
         return "/admin/query_meal";
     }
 
@@ -111,4 +124,25 @@ public class MealControlelr {
         mealService.deleteMealById(id);
         return "redirect:query_meal.action";
     }
+
+    // 测试分页
+    @RequestMapping(value = "/meal_page")
+    public String mealPage(@RequestParam(value = "currentPage") int currentPage,Model model) throws Exception{
+        // 默认每页显示5条数据
+        Page page = new Page();
+        page.setPageSize(5);
+        page.setCurrentPage(currentPage);
+        page.setTotalCount(mealService.getMealCount());
+        page.setPageCount(page.getPageCount());
+
+        MealCustom mealCustom = new MealCustom();
+        mealCustom.setPage(page);
+
+        MealVo mealVo = mealService.getAllMeal(mealCustom);
+        model.addAttribute("mealCustom",mealCustom);
+        model.addAttribute("mealVo",mealVo);
+        return "/admin/mealPage";
+    }
+
+
 }

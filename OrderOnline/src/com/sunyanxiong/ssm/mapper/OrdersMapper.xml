@@ -7,7 +7,7 @@
     <!-- 查询全部订单信息 -->
     <sql id="query_orderstate">
         AND orders.userid = users.id
-        <if test="orderstate != '' and orderstate != null">
+        <if test="orderstate != null">
           AND orders.orderstate = #{orderstate}
         </if>
     </sql>

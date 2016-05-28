@@ -50,7 +50,8 @@
 <div class="rightinfo">
 
     <ul class="seachform1">
-        <li class="sarchbtn"><label>&nbsp;</label><input name="" type="button" class="scbtn" value="未接单" onclick="queryWJ();"/>
+        <li class="sarchbtn"><label>&nbsp;</label>
+            <input name="" type="button" class="scbtn" value="未接单" onclick="queryWJ();"/>
             <input name="" type="button" class="scbtn" value="已接单" onclick="queryWP();"/>
             <input name="" type="button" class="scbtn" value="已配送" onclick="queryYP();"/>
             <input name="" type="button" class="scbtn" value="已完成" onclick="queryYW();"/>

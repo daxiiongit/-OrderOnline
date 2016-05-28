@@ -46,6 +46,7 @@ public class OrdersController {
         OrdersVo ordersVo = new OrdersVo();
         ordersVo.setOrdersList(ordersService.findAllOrders(ordersCustom));
         model.addAttribute("ordersVo",ordersVo);
+
         return "/admin/query_orders";
     }
 

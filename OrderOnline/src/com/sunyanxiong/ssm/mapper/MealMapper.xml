@@ -96,5 +96,20 @@
         DELETE FROM meal WHERE id = #{id}
     </delete>
 
+    <!--***************************************************************************************************-->
+    <!-- 测试分页代码 -->
+    <select id="getMealCount" resultType="int">
+        SELECT COUNT(*) FROM meal
+    </select>
+
+    <!--<select id="getAllMeal" parameterType="page" resultType="mealCustom">
+        SELECT * FROM meal limit #{pageIndex},#{pageSize}
+    </select>-->
+
+    <select id="getAllMeal" parameterType="mealCustom" resultType="mealCustom">
+        SELECT * FROM meal limit #{page.pageIndex},#{page.pageSize}
+    </select>
+
+    <!--***************************************************************************************************-->
 
 </mapper>

@@ -122,6 +122,7 @@ $(function(){
     </div>
     <ul class="menuson">
         <li><cite></cite><a href="${pageContext.request.contextPath }/query_meal.action" target="rightFrame">菜品列表</a><i></i></li>
+        <li><cite></cite><a href="${pageContext.request.contextPath }/meal_page.action?currentPage=1" target="rightFrame">分页设计</a><i></i></li>
         <li><cite></cite><a href="#" target="rightFrame">接口设置</a><i></i></li>
 
     </ul>

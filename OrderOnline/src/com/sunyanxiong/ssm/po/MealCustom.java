@@ -1,5 +1,8 @@
 package com.sunyanxiong.ssm.po;
 
+
+import com.sunyanxiong.ssm.page.Page;
+
 /**
  * Description: 菜品扩展类
  * <p>
@@ -17,4 +20,17 @@ public class MealCustom extends Meal{
     public void setMealseriesCustom(MealseriesCustom mealseriesCustom) {
         this.mealseriesCustom = mealseriesCustom;
     }
+
+    // 测试分页
+    private Page page;
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
 }
+

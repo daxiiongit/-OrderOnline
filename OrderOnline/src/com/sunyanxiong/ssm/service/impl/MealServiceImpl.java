@@ -1,8 +1,10 @@
 package com.sunyanxiong.ssm.service.impl;
 
 import com.sunyanxiong.ssm.mapper.MealMapper;
+import com.sunyanxiong.ssm.page.Page;
 import com.sunyanxiong.ssm.po.MealCustom;
 import com.sunyanxiong.ssm.service.MealService;
+import com.sunyanxiong.ssm.vo.MealVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +55,18 @@ public class MealServiceImpl implements MealService {
     @Override
     public void deleteMealById(int id) throws Exception {
         mealMapper.deleteMealById(id);
+    }
+
+    // 测试分页
+    @Override
+    public int getMealCount() throws Exception {
+        return mealMapper.getMealCount();
+    }
+
+    @Override
+    public MealVo getAllMeal(MealCustom mealCustom) throws Exception {
+        MealVo mealVo = new MealVo();
+        mealVo.setMealCustomList(mealMapper.getAllMeal(mealCustom));
+        return  mealVo;
     }
 }

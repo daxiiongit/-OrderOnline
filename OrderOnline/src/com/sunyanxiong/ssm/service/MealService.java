@@ -1,6 +1,8 @@
 package com.sunyanxiong.ssm.service;
 
+import com.sunyanxiong.ssm.page.Page;
 import com.sunyanxiong.ssm.po.MealCustom;
+import com.sunyanxiong.ssm.vo.MealVo;
 
 import java.util.List;
 
@@ -28,5 +30,9 @@ public interface MealService {
 
     // 删除菜品信息
     void deleteMealById(int id) throws Exception;
+
+    // 测试分页
+    int getMealCount() throws Exception;
+    MealVo getAllMeal(MealCustom mealCustom) throws Exception;
 
 }
