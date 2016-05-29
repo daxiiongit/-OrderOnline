@@ -1,6 +1,7 @@
 package com.sunyanxiong.ssm.controller;
 
 import com.sunyanxiong.ssm.page.Page;
+import com.sunyanxiong.ssm.po.Meal;
 import com.sunyanxiong.ssm.po.MealCustom;
 import com.sunyanxiong.ssm.po.Mealseries;
 import com.sunyanxiong.ssm.po.MealseriesCustom;
@@ -8,10 +9,13 @@ import com.sunyanxiong.ssm.service.MealService;
 import com.sunyanxiong.ssm.service.MealseriesService;
 import com.sunyanxiong.ssm.vo.MealVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -105,13 +109,18 @@ public class MealControlelr {
 
     // 到达修改页面
     @RequestMapping(value = "/toUpdateMeal")
-    public String toUpdateMeal(Model model,@RequestParam(value = "id") int id) throws Exception {
+    public String toUpdateMeal(Model model, @RequestParam(value = "id") int id,
+                               @RequestParam(value = "currentPage") int currentPage) throws Exception {
 
         System.out.println(id);
         MealCustom mealCustom = mealService.findMealById(id);
-        model.addAttribute("mealCustom",mealCustom);
 
-        System.out.println(mealCustom);
+        System.out.println("当前页面:" + currentPage);
+        Page page = new Page();
+        page.setCurrentPage(currentPage);
+        mealCustom.setPage(page);
+
+        model.addAttribute("mealCustom",mealCustom);
 
         // 需要做级联
         List<Mealseries> msList = mealseriesService.findMealseries(null);
@@ -124,14 +133,18 @@ public class MealControlelr {
     @RequestMapping(value = "/updatemeal")
     public String updateMeal(MealCustom mealCustom) throws Exception{
         mealService.updateMeal(mealCustom);
-        return "redirect:query_meal.action";
+
+        System.out.println(mealCustom.getPage().getCurrentPage());
+
+        return "redirect:query_meal.action?currentPage=" + mealCustom.getPage().getCurrentPage();
     }
 
     // 删除菜品
     @RequestMapping(value = "/delete_meal")
-    public String deleteMeal(@RequestParam(value = "id") int id) throws Exception{
+    public String deleteMeal(@RequestParam(value = "id") int id,
+                             @RequestParam(value = "currentPage") int currentPage) throws Exception{
         mealService.deleteMealById(id);
-        return "redirect:query_meal.action";
+        return "redirect:query_meal.action?currentPage=" + currentPage;
     }
 
     // 测试分页
@@ -152,6 +165,5 @@ public class MealControlelr {
         model.addAttribute("mealVo",mealVo);
         return "/admin/mealPage";
     }
-
 
 }

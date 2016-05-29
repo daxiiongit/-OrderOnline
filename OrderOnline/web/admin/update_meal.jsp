@@ -35,6 +35,7 @@
 
     <form action="updatemeal.action" method="post" target="rightFrame">
         <input type="hidden" name="id" value="${mealCustom.id}">
+        <input type="hidden" name="page.currentPage" value="${mealCustom.page.currentPage}">
         <ul class="forminfo">
             <li><label>菜系列表</label>
 

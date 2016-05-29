@@ -40,11 +40,66 @@
         });
     </script>
 
+    <script type="text/javascript">
+        /** 请求json，输出json **/
+        function requestJson(){
+            alert(1);
+            $.ajax({
+                /** 请求方式，post/get **/
+                type:'post',
+                /** 请求地址 **/
+                url:'${pageContext.request.contextPath }/requestJson.action',
+                /** 请求内容格式，json或者key/value **/
+                contentType:'application/json;charset=utf-8',
+                /** 请求数据内容 **/
+                data:'{"mealname":"牛肉","mealsummarize":"很好处","mealprice":105.23}',
+                /** 放回数据处理方法 **/
+                success:function(data){
+                    alert("菜品名称：" + data.mealname + "摘要：" + data.mealsummarize + "价格：" + data.mealprice);
+                }
+            });
+        }
+
+        /** 请求key/value，输出json **/
+        function responseJson(){
+            alert(1);
+            $.ajax({
+                /** 请求方式，post/get **/
+                type:'post',
+                /** 请求地址 **/
+                url:'${pageContext.request.contextPath }/responseJson.action',
+                /** 请求内容格式，json或者key/value **/
+                /*contentType:'application/Json;charset=utf-8',*/
+                /** 请求数据内容 **/
+                data:'mealname=牛肉&mealsummarize=摘要&mealprice=120.3',
+                /** 放回数据处理方法 **/
+                success:function(data){
+                    alert("菜品名称：" + data.mealname + "摘要：" + data.mealsummarize + "价格：" + data.mealprice);
+                }
+            });
+        }
+
+    </script>
 
 </head>
 
 
 <body>
+
+
+<br>
+<br>
+<br>
+
+<%--
+    测试json数据交互
+--%>
+
+<input type="button" name="requestJson" onclick="requestJson();" value="接口方式">
+<br><br>
+<input type="button" name="responseJson" onclick="responseJson();" value="html方式">
+<br><br>
+<br>
 
 <div class="rightinfo">
 
@@ -61,6 +116,7 @@
             <li class="click"><span><img src="/admin/images/t01.png"/></span>
                 <a href="toSaveMeal.action" target="rightFrame">添加</a></li>
             <li class="click"><span><img src="/admin/images/t02.png" /></span>修改</li>
+
             <li><span><img src="/admin/images/t03.png" /></span>删除</li>
             <li><span><img src="/admin/images/t04.png" /></span>统计</li>
         </ul>

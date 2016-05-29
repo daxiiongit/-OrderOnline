@@ -85,13 +85,15 @@
         <tbody>
         <c:forEach var="listMeal" items="${mealList}">
             <tr>
-                    <%-- <td><input name="" type="checkbox" value="" /></td>--%>
                 <td>${listMeal.id}</td>
                 <td>${listMeal.mealname}</td>
                 <td>${listMeal.mealprice}</td>
                 <td>${listMeal.mealseriesCustom.seriesname}</td>
-                <td><a href="toUpdateMeal.action?id=${listMeal.id}" class="tablelink" target="rightFrame">修改</a>
-                    <a href="javascript:void(0)" class="tablelink" name="deleteml" onclick="deleteml(${listMeal.id});">删除</a></td>
+                <td>
+                    <%--<a href="toUpdateMeal.action?id=${listMeal.id}" class="tablelink" target="rightFrame">修改</a>--%>
+                    <a href="javascript:void(0)" class="tablelink" target="rightFrame" name="editml" onclick="editml(${listMeal.id},${mealCustom.page.currentPage});">修改</a>
+                    <a href="javascript:void(0)" class="tablelink" name="deleteml" onclick="deleteml(${listMeal.id},${mealCustom.page.currentPage});">删除</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -116,13 +118,18 @@
     $('.tablelist tbody tr:odd').addClass('odd');
 
     // 验证是否删除菜系
-    function deleteml(id){
+    function deleteml(id,currentPage){
         if(confirm("确定要删除么？")){
-            window.location.href = "delete_meal.action?id=" + id;
+            window.location.href = "delete_meal.action?id=" + id + "&" + "currentPage" + "=" + currentPage ;
             return true;
         }else{
             return false;
         }
+    }
+
+    // 更新菜品
+    function editml(id,currentPage){
+        window.location.href = "toUpdateMeal.action?id=" + id + "&" + "currentPage" + "=" + currentPage;
     }
 
     // 模糊查询菜品
